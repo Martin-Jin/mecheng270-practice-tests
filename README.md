@@ -1,6 +1,9 @@
 ﻿# MECHENG270 Part 2 practice questions
 
-84 CodeRunner-style C++ practice questions for MECHENG270 Part 2: linked lists, stacks and queues, binary search trees, recursion, AVL trees, searching, complex arithmetic, DFT/FFT, the Strategy pattern, iterators, sorting algorithms, expression trees and Big O.
+84 CodeRunner-style C++ practice questions for MECHENG270 Part 2.
+
+- **Q1-Q50 (`questions/`)**: topics that can appear in the test: linked lists, stacks and queues, binary search trees, recursion, AVL trees, searching, complex arithmetic, DFT/FFT, the Strategy pattern.
+- **Q51-Q84 (`extra_questions/`)**: extra practice only. **These topics are NOT covered in the test**: iterators, sorting algorithms, expression trees and Big O analysis.
 
 Each question is one file with its own tests. You pick which question to run by changing one number.
 
@@ -9,10 +12,11 @@ Each question is one file with its own tests. You pick which question to run by 
 | File / folder | What it is for |
 |---|---|
 | [INDEX.md](INDEX.md) | All 84 questions with title, marks and topic. Start here to pick one. |
-| `questions/` | One file per question: the task, the provided code, your answer area and the tests. |
+| `questions/` | Q1-Q50, one file per question: the task, the provided code, your answer area and the tests. |
+| `extra_questions/` | Q51-Q84, **not covered in the test** (same layout: `questions/` and `solutions/` inside). They still run from `main.cpp` like any other question. |
 | `main.cpp` | The runner. You change one number in it to choose a question. |
 | `framework/` | The small test framework. You never need to edit it. |
-| `solutions/` | Reference solutions. **Spoilers**: only look after you've tried. |
+| `solutions/` | Reference solutions for Q1-Q50 (extras are in `extra_questions/solutions/`). **Spoilers**: only look after you've tried. |
 | `CMakeLists.txt` | The CMake build file. |
 
 ## One-time setup
@@ -37,7 +41,7 @@ constexpr int kQuestion = 7;
 
 ### Step 2: Write your answer
 
-1. Open the matching file in `questions/` (for example `questions/q07_sll_remove_tail.cpp`).
+1. Open the matching file in `questions/` (Q51-Q84: `extra_questions/questions/`) (for example `questions/q07_sll_remove_tail.cpp`).
 2. Read the task in the comment at the top.
 3. Write your code between these two markers:
 
@@ -133,7 +137,7 @@ cmake --build .
 
 ## Adding a question
 
-1. Copy an existing `questions/qNN_*.cpp` and its `solutions/qNN.inc`.
+1. Copy an existing `questions/qNN_*.cpp` and its `solutions/qNN.inc` (use `extra_questions/` for topics not in the test).
 2. Give it a new number and a **new namespace** (`namespace qNN`). All questions are linked into one program, so shared names like `Node` would otherwise clash.
 3. End the file with `REGISTER_QUESTION(NN, "Title", qNN::RunQNN);`.
 4. Add a row to [INDEX.md](INDEX.md).
