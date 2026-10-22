@@ -1,32 +1,19 @@
-vector<string> InfixToPostfix(const vector<string>& infix) {
-  vector<string> out, st;
-  for (size_t i = 0; i < infix.size(); ++i) {
-    const string& t = infix[i];
-    if (is_op(t)) {
-      while (!st.empty() && is_op(st.back())) {
-        int p_top = prec(st.back()), p_in = prec(t);
-        if (!(p_top > p_in || (p_top == p_in && !right_assoc(t)))) break;
-        out.push_back(st.back());
-        st.pop_back();
-      }
-      st.push_back(t);
-    } else if (t == "(") {
-      st.push_back(t);
-    } else if (t == ")") {
-      while (!st.empty() && st.back() != "(") {
-        out.push_back(st.back());
-        st.pop_back();
-      }
-      if (st.empty()) throw runtime_error("mismatched ')'");
-      st.pop_back();
-    } else {
-      out.push_back(t);
-    }
+double Eval(Node* n, const unordered_map<string, double>& env) {
+  if (!n) return 0.0;
+  if (!is_op(n->tok)) {  // leaf
+    if (IsNumber(n->tok)) return stod(n->tok);
+    auto it = env.find(n->tok);
+    if (it == env.end()) throw runtime_error("unknown variable: " + n->tok);
+    return it->second;
   }
-  while (!st.empty()) {
-    if (st.back() == "(") throw runtime_error("mismatched '('");
-    out.push_back(st.back());
-    st.pop_back();
+  double a = Eval(n->left, env);
+  double b = Eval(n->right, env);
+  if (n->tok == "+") return a + b;
+  if (n->tok == "-") return a - b;
+  if (n->tok == "*") return a * b;
+  if (n->tok == "/") {
+    if (b == 0.0) throw runtime_error("division by zero");
+    return a / b;
   }
-  return out;
+  return pow(a, b);  // "^"
 }

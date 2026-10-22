@@ -1,7 +1,9 @@
-template <typename It, typename T>
-It FindFirst(It first, It last, const T& value) {
-  for (It it = first; it != last; ++it) {
-    if (*it == value) return it;
+template <typename Container>
+string JoinWithIterators(const Container& c) {
+  ostringstream out;
+  for (auto it = c.begin(); it != c.end(); ++it) {
+    if (it != c.begin()) out << " ";
+    out << *it;
   }
-  return last;
+  return out.str();
 }

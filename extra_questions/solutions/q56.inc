@@ -1,4 +1,10 @@
-int KthFromEnd(const list<int>& l, int k) {
-  if (k < 1 || k > static_cast<int>(l.size())) return -1;
-  return *prev(l.end(), k);
+void MirrorSwap(vector<int>& v) {
+  if (v.empty()) return;
+  auto lo = v.begin();
+  auto hi = v.end() - 1;
+  while (lo < hi) {
+    swap(*lo, *hi);
+    ++lo;
+    --hi;
+  }
 }

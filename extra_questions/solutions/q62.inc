@@ -1,12 +1,11 @@
-int PartitionSpan(vector<int>& a, int L, int R) {
-  const int pivot = a[R];
-  int i = L;
-  for (int j = L; j < R; ++j) {
-    if (a[j] <= pivot) {
-      swap(a[i], a[j]);
-      ++i;
+void InsertionSort(vector<int>& a) {
+  for (int i = 1; i < (int)a.size(); ++i) {
+    const int key = a[i];
+    int j = i - 1;
+    while (j >= 0 && a[j] > key) {
+      a[j + 1] = a[j];
+      --j;
     }
+    a[j + 1] = key;
   }
-  swap(a[i], a[R]);
-  return i;
 }

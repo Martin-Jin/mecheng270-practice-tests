@@ -1,5 +1,8 @@
-void BigOConstants(int a, int b, int d, long long& c, long long& n0) {
-  // For N >= 1: N <= N^2 and 1 <= N^2, so aN^2 + bN + d <= (a + b + d) N^2.
-  c = (long long)a + b + d;
-  n0 = 1;
+bool HasDuplicate(const vector<int>& v) {
+  vector<int> sorted = v;
+  sort(sorted.begin(), sorted.end());
+  for (size_t i = 1; i < sorted.size(); ++i) {
+    if (sorted[i] == sorted[i - 1]) return true;
+  }
+  return false;
 }

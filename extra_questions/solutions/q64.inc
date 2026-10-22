@@ -1,11 +1,7 @@
-void StableSortByKey(vector<Record>& r) {
-  for (int i = 1; i < (int)r.size(); ++i) {
-    const Record cur = r[i];
-    int j = i - 1;
-    while (j >= 0 && r[j].key > cur.key) {
-      r[j + 1] = r[j];
-      --j;
-    }
-    r[j + 1] = cur;
-  }
+void MergeSort(vector<int>& a, int L, int R) {
+  if (L >= R) return;
+  const int m = L + (R - L) / 2;
+  MergeSort(a, L, m);
+  MergeSort(a, m + 1, R);
+  Merge(a, L, m, R);
 }

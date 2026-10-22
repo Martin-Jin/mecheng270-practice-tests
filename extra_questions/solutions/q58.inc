@@ -1,15 +1,11 @@
-int InsertionSort(vector<int>& a) {
-  int comparisons = 0;
-  for (int i = 1; i < (int)a.size(); ++i) {
-    const int key = a[i];
-    int j = i - 1;
-    while (j >= 0) {
-      ++comparisons;
-      if (!(a[j] > key)) break;
-      a[j + 1] = a[j];
-      --j;
-    }
-    a[j + 1] = key;
+void DoubleAll(vector<int>& v) {
+  for (auto& x : v) {
+    x *= 2;
   }
-  return comparisons;
+}
+
+void ClampNegativesToZero(vector<int>& v) {
+  for (auto it = v.begin(); it != v.end(); ++it) {
+    if (*it < 0) *it = 0;
+  }
 }

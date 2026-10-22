@@ -1,14 +1,13 @@
-void Merge(vector<Item>& a, int L, int m, int R) {
-  vector<Item> left(a.begin() + L, a.begin() + m + 1);
-  vector<Item> right(a.begin() + m + 1, a.begin() + R + 1);
-  int i = 0, j = 0, k = L;
-  while (i < (int)left.size() && j < (int)right.size()) {
-    if (left[i].key <= right[j].key) {
-      a[k++] = left[i++];
-    } else {
-      a[k++] = right[j++];
+int SelectionSort(vector<int>& a) {
+  const int N = (int)a.size();
+  int comparisons = 0;
+  for (int i = 0; i < N - 1; ++i) {
+    int min_idx = i;
+    for (int j = i + 1; j < N; ++j) {
+      ++comparisons;
+      if (a[j] < a[min_idx]) min_idx = j;
     }
+    Swap(a[i], a[min_idx]);
   }
-  while (i < (int)left.size()) a[k++] = left[i++];
-  while (j < (int)right.size()) a[k++] = right[j++];
+  return comparisons;
 }

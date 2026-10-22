@@ -1,21 +1,5 @@
-bool BinaryContains(const vector<int>& v, int key) {
-  int lo = 0;
-  int hi = (int)v.size() - 1;
-  while (lo <= hi) {
-    int mid = lo + (hi - lo) / 2;
-    if (v[mid] == key) return true;
-    if (v[mid] < key) {
-      lo = mid + 1;
-    } else {
-      hi = mid - 1;
-    }
-  }
-  return false;
-}
-
-bool ContainsAll(const vector<int>& sortedHaystack, const vector<int>& needles) {
-  for (size_t i = 0; i < needles.size(); ++i) {
-    if (!BinaryContains(sortedHaystack, needles[i])) return false;
-  }
-  return true;
+void BigOConstants(int a, int b, int d, long long& c, long long& n0) {
+  // For N >= 1: N <= N^2 and 1 <= N^2, so aN^2 + bN + d <= (a + b + d) N^2.
+  c = (long long)a + b + d;
+  n0 = 1;
 }

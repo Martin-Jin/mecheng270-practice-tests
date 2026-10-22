@@ -1,9 +1,6 @@
-int CountInversions(const vector<int>& a) {
-  int count = 0;
-  for (int i = 0; i < (int)a.size(); ++i) {
-    for (int j = i + 1; j < (int)a.size(); ++j) {
-      if (a[i] > a[j]) ++count;
-    }
-  }
-  return count;
+void QuickSort(vector<int>& a, int L, int R) {
+  if (L >= R) return;
+  const int p = Partition(a, L, R);
+  QuickSort(a, L, p - 1);
+  QuickSort(a, p + 1, R);
 }

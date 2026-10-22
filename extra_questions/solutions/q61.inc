@@ -1,7 +1,15 @@
-void MergeSort(vector<int>& a, int L, int R) {
-  if (L >= R) return;
-  const int m = L + (R - L) / 2;
-  MergeSort(a, L, m);
-  MergeSort(a, m + 1, R);
-  Merge(a, L, m, R);
+int InsertionSort(vector<int>& a) {
+  int comparisons = 0;
+  for (int i = 1; i < (int)a.size(); ++i) {
+    const int key = a[i];
+    int j = i - 1;
+    while (j >= 0) {
+      ++comparisons;
+      if (!(a[j] > key)) break;
+      a[j + 1] = a[j];
+      --j;
+    }
+    a[j + 1] = key;
+  }
+  return comparisons;
 }

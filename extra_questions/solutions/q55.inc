@@ -1,11 +1,7 @@
-void DoubleAll(vector<int>& v) {
-  for (auto& x : v) {
-    x *= 2;
+vector<int> ReverseCopy(const vector<int>& v) {
+  vector<int> result;
+  for (auto it = v.rbegin(); it != v.rend(); ++it) {
+    result.push_back(*it);
   }
-}
-
-void ClampNegativesToZero(vector<int>& v) {
-  for (auto it = v.begin(); it != v.end(); ++it) {
-    if (*it < 0) *it = 0;
-  }
+  return result;
 }

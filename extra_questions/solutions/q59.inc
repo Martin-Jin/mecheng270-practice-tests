@@ -1,11 +1,4 @@
-void InsertionSort(vector<int>& a) {
-  for (int i = 1; i < (int)a.size(); ++i) {
-    const int key = a[i];
-    int j = i - 1;
-    while (j >= 0 && a[j] > key) {
-      a[j + 1] = a[j];
-      --j;
-    }
-    a[j + 1] = key;
-  }
+int KthFromEnd(const list<int>& l, int k) {
+  if (k < 1 || k > static_cast<int>(l.size())) return -1;
+  return *prev(l.end(), k);
 }
